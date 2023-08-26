@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,7 @@ public class GptMathController {
 
     private final GPTService gptService;
 
-    @GetMapping("/api/gpt-math")
+    @PostMapping("/api/gpt-math")
     public ResponseEntity<GptMathResponse> getGptMathResponse(@Valid @RequestBody GptMathRequest gptMathRequest) throws Exception {
         createFileService.createFile(gptMathRequest.getFileEncodedBase64(), gptMathRequest.getFilename());
 
@@ -45,7 +46,7 @@ public class GptMathController {
                         .build());
     }
 
-    @GetMapping("/api/sample")
+    @PostMapping("/api/sample")
     public ResponseEntity<GptMathResponse> sample(@Valid @RequestBody GptMathRequest gptMathRequest) throws Exception {
         return ResponseEntity.ok(GptMathResponse.builder()
                 .problemText("problemText")

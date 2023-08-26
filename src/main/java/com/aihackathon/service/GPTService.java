@@ -27,7 +27,7 @@ public class GPTService {
     }
 
     public String getGPTHint3(String prompt) {
-        String newPrompt = "짧은 풀이와 답을 알려줘.\n" + "```\n" + prompt + "\n```\n";
+        String newPrompt = "짧은 풀이와 답을 알려줘.\n\n" + prompt;
         return getGPTString(newPrompt);
     }
 
