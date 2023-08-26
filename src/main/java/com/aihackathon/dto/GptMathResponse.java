@@ -7,6 +7,8 @@ import org.json.simple.parser.JSONParser;
 @Value
 @Builder
 public class GptMathResponse {
+    String gpt;
+  
     String problemText;
 
     String hint1;

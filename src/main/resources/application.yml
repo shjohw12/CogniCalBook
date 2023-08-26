@@ -1,3 +1,6 @@
 spring:
   profiles:
     active: local
+
+chatgpt:
+  api-key: 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
