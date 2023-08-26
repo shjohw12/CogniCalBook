@@ -31,15 +31,18 @@ public class GptMathController {
 
         String problemText = gptMathRequest.isText() ? textImageConvertService.clova(gptMathRequest.getFilename(), gptMathRequest.getFileEncodedBase64()) : mathImageConvertService.mathImageConvert(gptMathRequest.getFilename());
 
-        String gptHint = gptService.getGPTString(problemText);
+        String gptHint1 = gptService.getGPTHint1(problemText);
+        String gptHint2 = gptService.getGPTHint2(problemText);
+        String gptHint3 = gptService.getGPTHint3(problemText);
+        String gptAnswer = gptService.getGPTAnswer(problemText);
 
         return ResponseEntity.ok(GptMathResponse.builder()
                         .problemText(problemText)
-                        .hint1(gptHint)
-                        .hint2("hint2")
-                        .hint3("hint3")
+                        .hint1(gptHint1)
+                        .hint2(gptHint2)
+                        .hint3(gptHint3)
+                        .answer(gptAnswer)
                         .build());
-
     }
 
     @GetMapping("/api/sample")
