@@ -29,19 +29,30 @@ public class GptMathController {
 
     @GetMapping("/api/gpt-math")
     public ResponseEntity<GptMathResponse> getGptMathResponse(@Valid @RequestBody GptMathRequest gptMathRequest) throws Exception {
-
         createFileService.createFile(gptMathRequest.getFileEncodedBase64(), gptMathRequest.getFilename());
 
         String problemText = gptMathRequest.isText() ? textImageConvertService.clova(gptMathRequest.getFilename(), gptMathRequest.getFileEncodedBase64()) : mathImageConvertService.mathImageConvert(gptMathRequest.getFilename());
 
         String gptHint = gptService.getGPTString(problemText);
 
-        return ResponseEntity.ok(GptMathResponse.builder().gpt(gptHint).build());
-        //
-//        // GPT API 사용
-//        String gpt = "hi";
-//
-//        return ResponseEntity.ok(GptMathResponse.builder().gpt(gpt).build());
+        return ResponseEntity.ok(GptMathResponse.builder()
+                        .problemText(problemText)
+                        .hint1(gptHint)
+                        .hint2("hint2")
+                        .hint3("hint3")
+                        .build());
+
+    }
+
+    @GetMapping("/api/sample")
+    public ResponseEntity<GptMathResponse> sample(@Valid @RequestBody GptMathRequest gptMathRequest) throws Exception {
+        return ResponseEntity.ok(GptMathResponse.builder()
+                .problemText("problemText")
+                .hint1("hint1")
+                .hint2("hint2")
+                .hint3("hint3")
+                .answer("answer")
+                .build());
     }
 
     @GetMapping("/api/test")
