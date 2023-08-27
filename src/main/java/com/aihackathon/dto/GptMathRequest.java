@@ -11,5 +11,5 @@ public class GptMathRequest {
     String fileEncodedBase64;
 
     @Builder.Default
-    boolean isText = false;
+    boolean isText = true;
 }
