@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class MathImageConvertService {
 
-    private static String PYTHON_FILE = "/Users/jhhhh/Downloads/AI-Hackathon/test.py";
+    private static String PYTHON_FILE = "/home/ubuntu/image-to-latex/app.py";
 
     public String mathImageConvert(String filename) {
         try {
