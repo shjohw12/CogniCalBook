@@ -9,10 +9,7 @@ import com.aihackathon.service.TextImageConvertService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +23,7 @@ public class GptMathController {
 
     private final GPTService gptService;
 
+    @CrossOrigin(originPatterns = "http://localhost:8080")
     @PostMapping("/api/gpt-math")
     public ResponseEntity<GptMathResponse> getGptMathResponse(@Valid @RequestBody GptMathRequest gptMathRequest) throws Exception {
         createFileService.createFile(gptMathRequest.getFileEncodedBase64(), gptMathRequest.getFilename());
